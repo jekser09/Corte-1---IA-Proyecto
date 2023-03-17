@@ -12,8 +12,7 @@ class ASC():
         for i in tablero:print(i[0], " ", i[1], " ", i[2])
 
     def actualizarPesos(self, lista, pp)->list:
-        for i in range(len(lista)):
-            lista[i].peso = pp + lista[i].prof + lista[i].peso
+        for i in lista:i.peso = pp + i.prof + i.peso
         return lista
     
     def busqueda(self)->None:

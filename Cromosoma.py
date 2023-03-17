@@ -1,20 +1,20 @@
 import copy
 
-
-class Nodo:
-    def __init__(self, estado, padre, profundidad, regla, peso):
-        self.estado = estado
-        self.padre = padre
-        self.prof = profundidad
-        self.regla = regla
-        self.peso = peso
-
-    def buscaPosicion(self, tablero, val)->int:
+class Crom():
+    def __init__(self, genotipo, padre, generacion, regla, fitness) -> None:
+        self.padre=padre
+        self.generacion=generacion
+        self.genotipo=genotipo
+        self.regla=regla
+        self.fitness=fitness
+        self.descendientes=[]
+    
+    def busca_Posicion(self, tablero, val):
         for i in range(3):
             for j in range(3):
                 if tablero[i][j] == val:
                     return i, j
-
+    
     def estaEnPadre(self, nodito):
         esta = False
         aux = nodito.padre
@@ -23,8 +23,8 @@ class Nodo:
                 esta = True
             aux = aux.padre
         return esta
-
-    def calcularHeuristica(self,nodo,meta)->int:
+    
+    def calcularHeuristica(self,nodo,meta):
         h=0
         for ficha in range(9):
             i,j = self.buscaPosicion(nodo,ficha)
@@ -34,7 +34,7 @@ class Nodo:
         return h
     
     ##Reglas 1->Derecha 2->Izquierda 3->Arriba 4->Abajo
-    def moverA(self, nodoPadre)->list:
+    def moverA(self, nodoPadre):
         movimientos = []
         i, j = self.buscaPosicion(nodoPadre.estado, 0)
         if j != 2:
@@ -74,7 +74,7 @@ class Nodo:
             if not self.estaEnPadre(nodoHijo):
                 movimientos.append(nodoHijo)
         return movimientos
-
+    
     def hallarSucesores(self, nodoPadre,nodoMeta)->list:
         lista = self.moverA(nodoPadre)
         for i in range(len(lista)):
