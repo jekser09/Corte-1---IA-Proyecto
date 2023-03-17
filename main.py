@@ -2,13 +2,28 @@ from os import system
 import BusqProfundidad
 import BusqAAsterisco
 import AscColina
+import Archivos
+
+#Johand Esteban Castro Rodriguez
+#Sebastian 
 
 class Main():
     def __init__(self) -> None:
-        self.__ESTINICIAL = ([1, 2, 3], [0, 5, 6], [4, 7, 8])
-        self.__ESTFINAL = ([1, 2, 3], [4, 5, 6], [7, 8, 0])
+        self.def_Nodos()
         self.menu()
 
+
+    def def_Nodos(self)->None:
+        self.__ESTINICIAL=[]
+        self.__ESTFINAL=[]
+        aux=Archivos.File().traerNodos()
+        for i in aux:
+            if i[0].lower()=='inicial':
+                for j in i[1].split(','):self.__ESTINICIAL.append(list(map(lambda x:int(x),j.split(' '))))
+            elif i[0].lower()=='final':
+                for j in i[1].split(','):self.__ESTFINAL.append(list(map(lambda x:int(x),j.split(' '))))
+        self.__ESTINICIAL=tuple(self.__ESTINICIAL)
+        self.__ESTFINAL=tuple(self.__ESTFINAL)
 
     def pintar(self,tablero)->None:
         for i in range(3):
