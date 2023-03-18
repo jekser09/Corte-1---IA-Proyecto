@@ -1,5 +1,5 @@
 import nodo
-
+import sys
 class ASC():
 
     def __init__(self,inicial,final) -> None:
@@ -7,6 +7,7 @@ class ASC():
         self.nodoMeta=final
         self.abierto=[]
         self.cerrado=[]
+        sys
 
     def pintar(self, tablero)->None:
         for i in tablero:print(i[0], " ", i[1], " ", i[2])
@@ -14,7 +15,15 @@ class ASC():
     def actualizarPesos(self, lista, pp)->list:
         for i in lista:i.peso = pp + i.prof + i.peso
         return lista
-    
+
+    def ordenarSucesor(self,lista):
+        n = len(lista)
+        for i in range(n-1): 
+            for j in range(0, n-i-1): 
+                if lista[j].peso > lista[j+1].peso :
+                    lista[j], lista[j+1] = lista[j+1], lista[j]
+        return lista
+
     def busqueda(self)->None:
         nodosGenerados=0
         self.abierto.append(nodo.Nodo(self.nodoInicial,None,0,'Inicio',0))
@@ -39,7 +48,8 @@ class ASC():
                         print("Peso: ", actual.peso)
                         self.pintar(actual.estado)
                 if nSuc>0 and not metaInSucesores:
-                    sorted(sucesores,key=lambda x:x.peso)
+                    #sorted(sucesores,key=lambda x:x.peso)
+                    sucesores=self.ordenarSucesor(sucesores)
                     self.abierto=sucesores+self.abierto
         print("---------------------------------")
         print("La cantidad de nodos generados es: ", nodosGenerados)
