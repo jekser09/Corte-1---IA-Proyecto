@@ -5,7 +5,7 @@ import AscColina
 import Archivos
 
 #Johand Esteban Castro Rodriguez
-#Sebastian Alberto Martinez Gomez
+#Sebastian 
 
 class Main():
     def __init__(self) -> None:
