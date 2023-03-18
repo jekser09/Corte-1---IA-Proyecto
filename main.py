@@ -12,7 +12,6 @@ class Main():
         self.def_Nodos()
         self.menu()
 
-
     def def_Nodos(self)->None:
         self.__ESTINICIAL=[]
         self.__ESTFINAL=[]
@@ -33,7 +32,7 @@ class Main():
     def menu(self)->None:
         con = True
         while con:
-            ##try:
+            try:
                 print("----------------------------------")
                 print("--------- MENU PRINCIPAL ---------")
                 print("----------------------------------")
@@ -94,13 +93,13 @@ class Main():
                     else:
                         print("¡El estado inicial es igual al estado meta!")
                 elif opc == 6:
-                    print(6)
+                    print(f'')
                 elif opc == 0:
                     con = False
                 else:
                     print("Opcion Incorrecta, intente de nuevo")
-            ##except:
-                ##print("Opcion Incorrecta, intente de nuevo")
+            except Exception as e:
+                print(f"Error {e}, intente de nuevo")
         print("¡¡¡ APLICACION FINALIZADA !!!")
 
 if __name__=='__main__':

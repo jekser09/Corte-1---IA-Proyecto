@@ -1,10 +1,10 @@
 import copy
 
 class Crom():
-    def __init__(self, genotipo, padre, generacion, regla, fitness) -> None:
+    def __init__(self, fenotipo, padre, generacion, regla, fitness) -> None:
         self.padre=padre
         self.generacion=generacion
-        self.genotipo=genotipo
+        self.fenotipo=fenotipo
         self.regla=regla
         self.fitness=fitness
         self.descendientes=[]
